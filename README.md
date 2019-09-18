@@ -1,2 +1,3 @@
 # springCloud
 springCloud的各种组件使用
+1.springbootadmin是admin监控集成dingtalk
