@@ -1,0 +1,37 @@
+spring:
+    application:
+        name: admin-server
+    security:
+      user:
+        name: "admin"
+        password: "admin"
+    boot:
+      admin:
+        notify:
+          dingtalk:
+            enabled: true
+            webhook-token: https://oapi.dingtalk.com/robot/send?access_token=7a4ad90eda9f66ceb65af532243bc31e0f7aaa84a9ef1ec37afa4eb541cd2bc2
+server:
+    port: 8769
+
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:8761/eureka/
+    instance:
+        lease-renewal-interval-in-seconds: 10
+        health-check-url-path: /actuator/health
+        metadata-map:
+          user.name: ${spring.security.user.name}
+          user.password: ${spring.security.user.password}
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+
+    endpoint:
+        health:
+            show-details: always
+
